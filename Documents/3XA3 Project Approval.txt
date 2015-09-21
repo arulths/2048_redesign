@@ -1,0 +1,19 @@
+Josh Voskamp voskamjp
+Mohammad Usman Naveed naveedmu
+Stephan Arulthasan arulths
+
+Original Project Name: 2048
+Software purpose: Entertainment, Game
+Software scope: frontend and backend, user input
+
+URL: https://github.com/bulenkov/2048
+Any specialized hardware requirements?: No
+Any software license required that McMaster does not own?: No
+Programming language: Java
+Is programming language feasible for your team?: Yes
+Is the domain knowledge understandable within one term?: Yes
+Number of lines of code: 377
+License: Apache License, Version 2.0
+License allows public redevelopment?: Yes
+Can you compile the project’s source code?: Yes
+What would be some test cases for the existing software?: Winning algorithms, Losing Algorithms
