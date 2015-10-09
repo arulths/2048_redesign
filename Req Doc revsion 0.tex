@@ -20,11 +20,24 @@
 
 \section{Purpose of the Project}
 \subsection{What is the problem being solved?} 
-\par\indent\indent It is commonly known that technology, although serving countless purposes, is a large source of distraction to many people. More specifically, online applications, although highly entertaining and addicting, are very limited in cognitive stimulation. This is highly problematic as we are enabling a culture of absent minded technological engagement.
+\par\indent\indent It is commonly known that technology, although serving countless purposes, is a large source 
+of distraction to many people. More specifically, online applications, although highly entertaining and addicting, 
+are very limited in cognitive stimulation. This is highly problematic as we are enabling a culture of absent minded 
+technological engagement.
 \subsection{Why is this an Important Problem?} 
-\par\indent\indent According to Jane McGonigal, a well known and world renowned game designer; we spend 3 billion hours a week playing video games. That is a lot of time that many people argue could be spent better, and that is what 2048 aims to accomplish. More and more people are playing video games everyday and 2048 is a fun and challenging game that tests the users' mathematical as well as their spatial intelligence. This allows 2048 to be fun, yet still be brain enhancing. Since the target audience for this game is so large, we can take advantage of this by providing users an option to spend their gaming time in a way thats beneficial mentally while still being entertained.
+\par\indent\indent According to Jane McGonigal, a well known and world renowned game designer; we spend 3 
+billion hours a week playing video games. That is a lot of time that many people argue could be spent better, and 
+that is what 2048 aims to accomplish. More and more people are playing video games everyday and 2048 is a 
+fun and challenging game that tests the users' mathematical as well as their spatial intelligence. This allows 2048 
+to be fun, yet still be brain enhancing. Since the target audience for this game is so large, we can take advantage 
+of this by providing users an option to spend their gaming time in a way thats beneficial mentally while still being 
+entertained.
 \subsection{Context of the problem} 
-\par\indent\indent Everyone experiences idle time in their day; this could be waiting for an appointment, a class, a bus or for friends. This game is intended to appeal to everyone looking for a more entertaining way to spend their idle time. The complexity of the game is meant to provide a challenge so that the user does not feel like they are wasting time, but using their time constructively. The game will be playable on all of the three major operating systems, OSX, Windows, and Linux with possible future expansion to mobile devices.
+\par\indent\indent Everyone experiences idle time in their day; this could be waiting for an appointment, a class, a 
+bus or for friends. This game is intended to appeal to everyone looking for a more entertaining way to spend their 
+idle time. The complexity of the game is meant to provide a challenge so that the user does not feel like they are 
+wasting time, but using their time constructively. The game will be playable on all of the three major operating 
+systems, OSX, Windows, and Linux with possible future expansion to mobile devices.
 
 \section{Stakeholders}
 \subsection{Client}
@@ -42,7 +55,8 @@
 
 \section{Users of the Product}
 \subsection{Hands-On Users of the Product}
-\par\indent\indent Any person with any computer running the Java Runtime Environment can use our game to relieve stress and build on their mathematical and spatial intelligence. 
+\par\indent\indent Any person with any computer running the Java Runtime Environment can use our game to 
+relieve stress and build on their mathematical and spatial intelligence. 
 \subsection{Priorities assigned to Users}
 \textbf{Primary Users:} Windows, Mac OSX, and LINUX users
 \\
@@ -60,12 +74,16 @@
 \section{Project Constraints}
 \subsection{Mandated Constraints}
 \textbf{Description:} The product shall operate using Windows, Mac OSX and LINUX
-\textbf{Rationale:} Users do not want to change operating systems just for the game and it will be more convenient for them.\\
+\textbf{Rationale:} Users do not want to change operating systems just for the game and it will be more 
+convenient for them.\\
 \textbf{Description:} The product should be easy to use for people over the age of 10
-\textbf{Rationale:} The product does require a certain level of mathematical and spatial intelligence which is why users under 10 years of age may find it difficult to use. 
+\textbf{Rationale:} The product does require a certain level of mathematical and spatial intelligence which is why 
+users under 10 years of age may find it difficult to use. 
 \subsection{Off the Shelf Software}
-\par\indent\indent The open source project that is being improved can be found at https://github.com/bulenkov/2048.
-This implementation of 2048 is based off the original 2048 game created by Gabriele Cirulli which was also based off a small clone of 1024. https://github.com/gabrielecirulli/2048.
+\par\indent\indent The open source project that is being improved can be found at \\https://github.com/bulenkov/
+2048.
+This implementation of 2048 is based off the original 2048 game created by Gabriele Cirulli which was also 
+based off a small clone of 1024. https://github.com/gabrielecirulli/2048.
 \subsection{Anticipated Workplace Enviroment}
 This application is expected to be used at home, in the workplace, at school, and in the public.\newline
 \subsection{Schedule Constraints}
@@ -75,6 +93,83 @@ Final Demonstration \hfill				November 30 - December 4 \newline
 
 \section{Functional Requirements}
 \subsection{Scope of the Project}
-Everyone experiences idle time in their day; this could be waiting for an appointment, a class, a bus or for friends. That is a lot of time that many people argue could be spent better, and that is what 2048 aims to accomplish. 2048 is a game in which the user uses the arrow keys to combine alike tiles in an attempt to reach the "2048" tile.
+Everyone experiences idle time in their day; this could be waiting for an appointment, a class, a bus or for friends. 
+That is a lot of time that many people argue could be spent better, and that is what 2048 aims to accomplish. 
+2048 is a game in which the user uses the arrow keys to combine alike tiles in an attempt to reach the "2048" tile.
+
+\subsection{Functional and Data Requirements}
+\textbf {Requirement \#:1} \indent\textbf {Requirement Type:}\\\\
+\textbf {Description:} The user must be able to start a game.\\
+\textbf {Rational:} In order for the player to play the game, it has to initialize first.\\
+\textbf {Fit Criterion:} User successively starts game so they can play. \\\\
+
+\textbf {Requirement \#:2} \indent\textbf {Requirement Type:} \\\\
+\textbf {Description:} The user must be able to restart the game.\\
+\textbf {Rational:}The user may want to restart if they made a bad move or have already won or lost the game. \\
+\textbf {Fit Criterion:}Users successfully restarts the game. \\\\
+
+\textbf {Requirement \#:3} \indent\textbf {Requirement Type:}\\\\
+\textbf {Description:} The user must be able to exit the game.\\
+\textbf {Rational:} The user may want to exit the session at any time.\\
+\textbf {Fit Criterion:} User successfully exits game. \\\\
+
+\textbf {Requirement \#:4} \indent\textbf {Requirement Type:}\\\\
+\textbf {Description:}The user must be able to make moves. \\
+\textbf {Rational:} In order to play and win the game, the user must be able to move the tiles around. \\
+\textbf {Fit Criterion:}User successfully makes a move, tiles join and score counter increases. \\\\
+
+\textbf {Requirement \#:5} \indent\textbf {Requirement Type:} \\\\
+\textbf {Description:} The user must be able to win the game.\\
+\textbf {Rational:} The player is working towards making the 2048 tile. \\
+\textbf {Fit Criterion:} User successfully makes the 2048 tile and the game ends. \\\\
+
+\textbf {Requirement \#:6} \indent\textbf {Requirement Type:}\\\\
+\textbf {Description:}The user must be able to lose the game. \\
+\textbf {Rational:} It is possible to make a bad sequence of moves in the game so that all the tiles are filled and 
+no more moves can be created.\\
+\textbf {Fit Criterion:} The user fills up all the tile spaces and the game ends.\\\\
+
+\textbf {Requirement \#:7} \indent\textbf {Requirement Type:} \\\\
+\textbf {Description:} The product must display the game score.\\
+\textbf {Rational:} The user will be able to rank themselves against other players and try to beat their own high 
+score.\\
+\textbf {Fit Criterion:} Product successfully displays score based on moves made by user.\\\\
+\newpage
+\textbf {Requirement \#:8} \indent\textbf {Requirement Type:} \\\\
+\textbf {Description:} The product must notify the user if they win or lose.\\
+\textbf {Rational:} The user must be able to tell if they successfully win the game. Also, the tiles on the screen 
+may be filled up but that doesn't necessarily mean they lost because there can be moves available. \\
+\textbf {Fit Criterion:} The game displays a win notification when the user reaches the 2048 tile and a lose 
+notification when the user fills up all the tile spaces with no moves left. \\\\
+
+\section{Project Issues}
+\subsection{Costs}
+There are no direct monetary costs associated with this project, but about half a year of development
+time will be required.\\
+
+\subsection{User Documentation and Training}
+User?s will provided with information on program use via a ?FAQ? option which, when selected, will
+open a dialog box detailing general functionality of the program.
+Beyond the help document, user?s familiar with casual computer use should require no further training.\\
+
+\subsection{Tasks}
+\begin{itemize}
+\item Revise requirements document.
+\item Create a test plan.
+\item Demonstrate a proof of concept.
+\item Draw up design documents.
+\item Revision 0 project demonstration.
+\item Create a user guide for the project.
+\item Write up a test report
+\item Final revision project demonstration.
+\item Write final revisions to documentation.
+\end{itemize}
+
+\subsection{Waiting Room}
+There are no plans to introduce new releases of this product. If that were to change, new features would include an animated GUI and an online high score list. 
+
+
+
+
 
 \end{document}
