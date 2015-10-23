@@ -87,6 +87,7 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
     0 & Oct 23 2015 & Non Functional Tests & Mohammad Naveed \\ \hline
     0 & Oct 23 2015 & Proof of Concept & Josh Voskamp \\ \hline
     0 & Oct 23 2015 & Project Plan & Mohammad Naveed \\ \hline
+    0 & Oct 23 2015 & Method of Testing & Stephan Arulthasan \\ \hline
     
     \end{tabular}
     \caption{Revision History}
@@ -138,6 +139,8 @@ involves constantly executing the same or similar tests.
 \subsection{JUnit}
 JUnit is an automated unit testing framework for Java. It will be used in the 
 testing of the game 2048.
+\section{Method of Testing}
+\subsection{Unit Testing}The application is broken down into a Model, View, Controller (MVC) format, in which all the data and objects are placed within the Model class. The visualization of the application is placed within the View class, and the logic to change the states of the application is separated into the Control class. Using this format, we can test the correctness and functionality of the application in the form of JUnit testing. This separates the test cases into smaller ones, and tests every single class with specific cases to ensure overall correctness. The process of creating a new game of 2048 in its current implementation, involves a "game board" array that contains all the values of the current state. An array contains 16 values, as the game board holds "tile" objects in a 4x4 format. Testing for a specific case would be achieved by creating a new array that contains a predetermined combination of values, inserting it into the main class, and then compiling and running the game to see how the application responds. For example, testing for a win in 2048 can be done by creating an array where at least two values contain the tile object with a values of 1024. This will be the "initial state." The game can then run and be recorded to see what the output is after a specific set of inputs. This entire process can be automated, by creating a script with several different arrays to cover each test case and then recording the output of the "assertEquals" function. \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{System Tests}
@@ -179,14 +182,14 @@ is full of tiles (16) with one more move available, which results in the next
 state having no more valid moves available, which means no two tiles that are 
 the same are adjacent.\\
 \textbf{Input:} User completes their only valid move\\
-\textbf{Output:} The game ends and displays "You Lose" message on screen.
+\textbf{Output:} The game ends and displays "You Lose" message on screen.\\
 \textbf{Method of Testing:} Automated and Manual testing
 
 \subsection{Test Case 6: The user must not be able to move off the edge of the board.}
 
 \textbf{Initial State:} The game board must be running in a state where there is only one tile in the bottom left corner.\\
 \textbf{Input:} User presses the left key.\\
-\textbf{Output:} Does not allow the tile to move left.
+\textbf{Output:} Does not allow the tile to move left.\\
 \textbf{Method of Testing:} Automated and Manual testing
 
 \subsection{Testing against Existing Implementation.}
