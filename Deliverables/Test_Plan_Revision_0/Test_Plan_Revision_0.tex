@@ -1,0 +1,356 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University Assignment Title Page 
+% LaTeX Template
+% Version 1.0 (27/12/12)
+%
+% This template has been downloaded from:
+% http:\\www.LaTeXTemplates.com
+%
+% Original author:
+% WikiBooks (http:\\en.wikibooks.org/wiki/LaTeX/Title_Creation)
+%
+% License:
+% CC BY-NC-SA 3.0 (http:\\creativecommons.org/licenses/by-nc-sa/3.0/)
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{tabularx}
+\begin{document}
+\sloppy
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the 
+%horizontal lines, change thickness heReve
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE McMaster University}\\[1.5cm] % Name of your university/college
+\textsc{\Large Software Project Management}\\[0.5cm] % Major heading such as course name
+\textsc{\large SFWR ENG 3XA3}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Software Test Plan}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Authors:}\\
+Mohammad \textsc{Naveed} \textbf{1332196} \\ % Your name
+Josh \textsc{Voskamp} \textbf{1319352} \\
+Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+\listoftables
+\newpage
+
+\section{Revision History}
+\begin{table}[!htbp]
+	\centering
+    \begin{tabular}{ | p{2cm} | l| l | l |p{3cm}|}
+    \hline
+    Revision Number & Revision Date & Description & Author \\ \hline
+    0 & Oct 21 2015 & Created Test Plan Document & Stephan Arulthasan \\ \hline
+    0 & Oct 21 2015 & Functional Tests & Everyone \\ \hline
+    0 & Oct 22 2015 & Tools and Types of Tests & Josh Voskamp \\ \hline
+    0 & Oct 23 2015 & Non Functional Tests & Mohammad Naveed \\ \hline
+    0 & Oct 23 2015 & Proof of Concept & Josh Voskamp \\ \hline
+    0 & Oct 23 2015 & Project Plan & Mohammad Naveed \\ \hline
+    
+    \end{tabular}
+    \caption{Revision History}
+\end{table}
+
+
+\newpage
+
+\section{Introduction}
+
+\subsection{Document Overview}
+This document describes the verification and validation process that will be 
+used to test the game 2048. This document will be used as a reference for 
+future testing.
+
+\section{Types of Tests}
+
+\subsection{Structural Testing}
+Structural testing is also known as white box testing. Structural testing 
+uses an understanding of the internal code of the program to select test cases. 
+The purpose is to test how the program handles extreme cases.
+
+\subsection{Functional Testing}
+Functional testing is also known as black box testing. Functional testing 
+focuses on giving a specific input and verifying that the program returns the 
+expected output. The purpose is to test the functional requirements.
+
+\subsection{Unit Testing}
+Unit tests involves testing individual units of code independently to make sure 
+that inputs give their expected outputs. Unit testing can be done both,  
+manually or automatically.
+
+\subsection{Static vs Dynamic Testing}
+Static testing is a testing method focused on verification. This is done by 
+reading through the code looking for errors rather than executing the program.
+Dynamic testing is performed in a runtime environment. Dynamic testing monitors 
+the program's interactions with system memory, CPU and overall system  
+performance. Dynamic testing is focused on validation.
+
+\subsection{Manual vs Automated Testing}
+Manual testing is performed by people, where test cases are preformed manually. 
+Manual testing is more flexible in its test cases. Automated testing 
+requires automated tools to perform tests quickly and effectively returning 
+results. Manual testing is inefficient to perform regression testing, which 
+involves constantly executing the same or similar tests.
+
+\section{Test Tools}
+
+\subsection{JUnit}
+JUnit is an automated unit testing framework for Java. It will be used in the 
+testing of the game 2048.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{System Tests}
+\subsection{Test Case 1: Starting a new game} 
+
+\textbf{Initial State:} An existing game is running already. \\
+\textbf{Input:} Escape Key\\
+\textbf{Output:} New game board initiated, with two random tiles (2,4) generated. 
+\textbf{Method of Testing:} Manual testing
+
+\subsection{Test Case 2: Exiting a game.}
+
+\textbf{Initial State:} The game board is running already.\\
+\textbf{Input:} User presses the red "X" that closes the window.\\
+\textbf{Output:} The window closes. \\
+\textbf{Method of Testing:} Manual testing
+
+\subsection{Test Case 3: The user must be able to make moves.}
+
+\textbf{Initial State:} Game board is running with any set of tiles.\\
+\textbf{Input:} User presses either of the 4 arrow keys.\\
+\textbf{Output:} The tiles move in the specified direction pressed by the user.
+\textbf{Method of Testing:} Automated and Manual testing
+
+\subsection{Test Case 4: The user must be able to win the game.}
+
+\textbf{Initial State:} The game board must be running with at least 2 1024 tiles beside 
+each other.\\
+\textbf{Input:} The user presses one of the arrow keys that would join the two tiles 
+together.\\
+\textbf{Output:} The two tiles join to create the 2048 tile and the game indicates the 
+user has won. No more moves can be made.\\
+\textbf{Method of Testing:} Automated and Manual testing
+
+\subsection{Test Case 5: The user must be able to lose the game.}
+
+\textbf{Initial State:} The game board must be running in a state where the game board 
+is full of tiles (16) with one more move available, which results in the next 
+state having no more valid moves available, which means no two tiles that are 
+the same are adjacent.\\
+\textbf{Input:} User completes their only valid move\\
+\textbf{Output:} The game ends and displays "You Lose" message on screen.
+\textbf{Method of Testing:} Automated and Manual testing
+
+\subsection{Test Case 6: The user must not be able to move off the edge of the board.}
+
+\textbf{Initial State:} The game board must be running in a state where there is only one tile in the bottom left corner.\\
+\textbf{Input:} User presses the left key.\\
+\textbf{Output:} Does not allow the tile to move left.
+\textbf{Method of Testing:} Automated and Manual testing
+
+\subsection{Testing against Existing Implementation.}
+This version of the game will be tested against the existing implementation by running the same sequence of moves on identical initial game boards, and then compare the resulting game board. This will be tested through automated testing. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Test Factors}
+The test factors refer to the testing approach used to test software quality 
+factors, which are the \emph{non-functional requirements} of the system. Some 
+of the test factors and their most common testing techniques are shown in the 
+table below:
+\begin{table}[!htbp]
+	\centering
+	\begin{tabular}{ | l |p{5cm}|p{5cm}| l | |}
+		\hline
+		Test Factor & Meaning & Test Techniques \\ \hline
+		Ease of Use & Ability of the user to readily perform a successful task 
+		& Compliance, requirements, manual support, unit testing, usability 
+		testing \\ \hline
+		Performance & Systems responsiveness and reaction to standard and non 
+		standard workloads & Stress, execution, compliance, unit testing \\
+		\hline
+		Reliability & Ability to perform its functions and maintain performance 
+		through circumstances & Execution, recovery, requirements, error 		
+		handling,unit testing  \\ \hline
+		Portability & Ability to compile and run on different platforms &  
+		Operations, compliance \\ \hline
+		Maintainability & Ease at which the product can be maintained & 		
+		Compliance, unit testing \\ \hline 
+		Coupling & How modules within the system rely on each other & 
+		Operations, inter-systems control \\ 
+		\hline
+	\end{tabular}
+	\caption{Test Factors}
+\end{table}
+
+\subsection{Factors to be tested in 2048}
+\subsubsection{Ease of Use}
+The software should be easy to use and understand. Users of the software should 
+be able to determine what they can and cannot do with ease, and the interface 
+should also be intuitive.\\
+
+\textbf{\emph{Rationale:}}\\
+Testing the user interface will give us a good insight as to what the average 
+user might find too complicated or too easy, and this will allow us to make 
+further potential improvements on the user interface. Furthermore, properly 
+testing the interface and ensuring that it is easy to use will enhance the 
+users experience with the product. \\
+
+\textbf{\emph{Method of Testing:}}\\
+Testing the ease of use will be done through manual testing. It will be done by 
+getting a set of users that have no background in computer science or any 
+related fields, and getting feedback from them about the interface and how easy 
+the game was to play.  
+
+\subsubsection{Performance}
+The performance of 2048 should be high enough to keep the users engaged in the 
+game by responding quickly to the users actions. Since our game does not 
+require an IP/TCP connection to the internet, performance in this case refers 
+to the response time of the game to both valid and non valid actions made by 
+the users. \\
+
+\textbf{\emph{Rationale:}}\\
+Testing the performance of 2048 will give a good idea of the response time of 
+the game to the users actions. This will allow us to make improvements if 
+necessary. Furthermore, testing performance of this version of 2048 could be 
+used as a benchmark for future versions of the game. \\
+
+\textbf{\emph{Method of Testing:}}\\
+Testing the performance of 2048 will be done through both automated testing and 
+manual testing. Automated testing will be done through JUnit test cases in 
+which each test case models the permissible user actions. The response time of 
+the game to the test cases will also be recorded. Manual testing will be done 
+through a set of users that play the game and have the response time of each 
+action recorded. 
+
+\subsubsection{Portability}
+The software should be portable in that it has the ability to run and compile 
+on different operating systems, as this will allow us to target a much larger 
+audience. \\
+
+\textbf{\emph{Rationale:}}\\
+Testing the portability of 2048 will ensure that the game will work on all 
+major platforms such as Mac OSX, Linux, and Windows. \\
+
+\textbf{\emph{Method of Testing:}}\\
+Testing the portability of 2048 will be done manually. The game will be run on 
+all three different operating systems and results will be recorded (i.e. 
+whether the game compiles and runs or not).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Proof of Concept Test}
+
+\subsection{User Interface Scaling}
+Since there are many screen resolutions available, the user interface must 
+scale to allow the user to easily see the game. This will be tested manually by 
+running the user interface on different screen resolutions.
+
+\subsection{Joining of Tiles}
+The user should be able to join 2 tile of equal value. Ex (2 and 2). This will 
+be tested manually by playing through the game. Joining of tiles will also be 
+tested using the automated Java unit testing framework, JUnit.\\
+
+\textbf{Test Case}\\
+\textbf{Initial State:} The game board must be running with at least 2 tiles of 
+equal value next to each other. \\
+\textbf{Input:} The user presses the arrow key in the direction that would join 
+the two tiles together. \\
+\textbf{Output:} The tiles join and become a new tile with double the value.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Project Plan}
+This section provides details on the system to be tested, the team members, the 
+milestones and scheduling for the testing process.
+
+\subsection{Software Description}
+The software being tested is the puzzle game 2048. The game takes as input the 
+directional keys on the keyboard, and outputs the corresponding state of the 
+game board after a user action. The goal of the game is to get the 2048 tile by 
+adding smaller tiles that are all multiples of 2. The game ends when there are 
+no valid moves left for the use to make and the board is full. 
+
+\subsection{Team Members}
+The team that will execute the test cases consists of:
+
+\begin{itemize}
+	\item Mohammad Naveed
+	\item Josh Voskamp
+	\item Stephan Arulthasan
+\end{itemize}
+
+\subsection{Milestones}
+
+\subsubsection{Location}
+The location where the testing and validation will take place is in Hamilton, 
+Ontario. At McMaster University.
+
+\subsubsection{Dates and Deadlines}
+\textbf{\emph{Test Cases:}}
+The creation of the system test cases and JUnit test cases is scheduled to 
+begin on October 18th, 2015. The deadline for the test cases is October 23rd, 
+2015. All three team members will responsible for coming up with both the 
+system test cases and the JUnit test cases.\\
+\textbf{\emph{Test Case Implementation:}}
+The implementation of the the JUnit automated testing will begin on October 
+20th, 2015. The deadline for the implementation will be on October 25th, 2015. 
+Josh Voskamp will be responsible for the implementation of the test cases.\\
+\textbf{\emph{Test Report:}}
+The test report is scheduled to begin October 20th, 2015 and the deadline will 
+be on November 27th, 2015. The whole team will be responsible for the test 
+report.
+
+\section{Project Approval}
+
+\begin{center}
+	\begin{tabular}{ | p{5cm} | p{5cm} |}
+		\hline
+		Professor - Spencer Smith &  \\ \hline
+		TA - Li Peng &  \\ \hline
+	\end{tabular}
+\end{center}
+
+\end{document}
