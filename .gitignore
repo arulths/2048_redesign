@@ -4,3 +4,16 @@
 *.toc
 *.DS_Store
 *.lot
+
+*.iml
+
+## Directory-based project format:
+.idea/
+.gradle/
+
+## File-based project format:
+*.ipr
+*.iws
+
+# IntelliJ
+/out/
