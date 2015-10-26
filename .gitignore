@@ -6,6 +6,8 @@
 *.lot
 
 *.iml
+*.class
+
 
 ## Directory-based project format:
 .idea/
