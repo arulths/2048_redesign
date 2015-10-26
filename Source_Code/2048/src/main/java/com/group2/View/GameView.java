@@ -22,9 +22,10 @@ public class GameView extends JPanel{
         this.board = board;
         this.TILE_SIZE = scale;
         this.TILES_MARGIN = scale/20;
-        System.out.println(scale);
     }
-
+    /**
+     * Draws the graphics
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -45,9 +46,13 @@ public class GameView extends JPanel{
         int xOffset = offsetCoors(x);
         int yOffset = offsetCoors(y);
         g.setColor(tile.getBackground());
+
         g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
         g.setColor(tile.getForeground());
+
+        //This needs to scale
         final int size = value < 100 ? 200 : value < 1000 ? 175 : 135;
+
         final Font font = new Font(FONT_NAME, Font.BOLD, size);
         g.setFont(font);
 
@@ -58,38 +63,58 @@ public class GameView extends JPanel{
         final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
 
         if (value != 0)
+
+            //Fix this line to center the number on the tiles
             g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2);
 
         if (board.isMyWin() || board.isMyLose()) {
             g.setColor(new Color(255, 255, 255, 30));
             g.fillRect(0, 0, getWidth(), getHeight());
 
+            //This needs to scale
             g.setFont(new Font(FONT_NAME, Font.PLAIN, 50));
             g.setColor(new Color(128, 128, 128, 128));
-            drawCenteredString("Press ESC to play again", getWidth(), getHeight() * 2 - g.getFontMetrics().getHeight(), g);
+
+            //Change this line to scale
+            drawCenteredString("Press ESC to play again", getWidth(), getHeight() * 2 - g.getFontMetrics().getHeight()-100, g);
 
             g.setColor(new Color(78, 139, 202));
+
+            //This needs to scale
             g.setFont(new Font(FONT_NAME, Font.BOLD, 48));
 
             if (board.isMyWin()) {
-                System.out.println(getWidth());
+                //Change this line to scale
                 drawCenteredString("You won!", getWidth(), getHeight(), g);
             }
             if (board.isMyLose()) {
-                System.out.println(getWidth());
-                System.out.println(getHeight());
-                drawCenteredString("Game over!", getWidth(), getHeight(),g);
-                drawCenteredString("You lose!", getWidth(), getHeight(),g);
+                //Change these lines to scale
+                drawCenteredString("Game over!", getWidth(), getHeight()-getHeight()/5,g);
+                drawCenteredString("You lose!", getWidth(), getHeight()+getHeight()/5,g);
             }
         }
+
+        g.setColor(new Color(128, 128, 128, 128));
+
+        // /This needs to be scaled
         g.setFont(new Font(FONT_NAME, Font.PLAIN, 70));
-        drawCenteredString(("Score: " + board.getMyScore()), this.getWidth(), this.getHeight()*2, g);
+
+        //Change this line to scale
+        drawCenteredString(("Score: " + board.getMyScore()), this.getWidth(), this.getHeight() * 2, g);
 
     }
+
+    /**
+     * Sample block comment
+     */
 
     private int offsetCoors(int arg) {
         return arg * (this.TILES_MARGIN + this.TILE_SIZE) + this.TILES_MARGIN;
     }
+
+    /**
+     * Sample block comment
+     */
 
     public void drawCenteredString(String s, int w, int h, Graphics g) {
         FontMetrics fm = g.getFontMetrics();
