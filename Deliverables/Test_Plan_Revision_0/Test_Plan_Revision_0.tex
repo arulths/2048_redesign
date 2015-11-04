@@ -14,6 +14,8 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[12pt]{article}
 \usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{linktoc=all}
 \begin{document}
 \sloppy
 
@@ -73,9 +75,14 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
 \tableofcontents
 \newpage
 \listoftables
+\addcontentsline{toc}{section}{List of Tables}
+\newpage
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
 \newpage
 
-\section{Revision History}
+\section*{Revision History}
+\addcontentsline{toc}{section}{Revision History}
 \begin{table}[!htbp]
 	\centering
     \begin{tabular}{ | p{2cm} | l| l | l |p{3cm}|}
@@ -140,7 +147,8 @@ involves constantly executing the same or similar tests.
 JUnit is an automated unit testing framework for Java. It will be used in the 
 testing of the game 2048.
 \section{Method of Testing}
-\subsection{Unit Testing}The application is broken down into a Model, View, Controller (MVC) format, in which all the data and objects are placed within the Model class. The visualization of the application is placed within the View class, and the logic to change the states of the application is separated into the Control class. Using this format, we can test the correctness and functionality of the application in the form of JUnit testing. This separates the test cases into smaller ones, and tests every single class with specific cases to ensure overall correctness. The process of creating a new game of 2048 in its current implementation, involves a "game board" array that contains all the values of the current state. An array contains 16 values, as the game board holds "tile" objects in a 4x4 format. Testing for a specific case would be achieved by creating a new array that contains a predetermined combination of values, inserting it into the main class, and then compiling and running the game to see how the application responds. For example, testing for a win in 2048 can be done by creating an array where at least two values contain the tile object with a values of 1024. This will be the "initial state." The game can then run and be recorded to see what the output is after a specific set of inputs. This entire process can be automated, by creating a script with several different arrays to cover each test case and then recording the output of the "assertEquals" function. \\
+\subsection{Unit Testing}
+The application is broken down into a Model, View, Controller (MVC) format, in which all the data and objects are placed within the Model class. The visualization of the application is placed within the View class, and the logic to change the states of the application is separated into the Control class. Using this format, we can test the correctness and functionality of the application in the form of JUnit testing. This separates the test cases into smaller ones, and tests every single class with specific cases to ensure overall correctness. The process of creating a new game of 2048 in its current implementation, involves a "game board" array that contains all the values of the current state. An array contains 16 values, as the game board holds "tile" objects in a 4x4 format. Testing for a specific case would be achieved by creating a new array that contains a predetermined combination of values, inserting it into the main class, and then compiling and running the game to see how the application responds. For example, testing for a win in 2048 can be done by creating an array where at least two values contain the tile object with a values of 1024. This will be the "initial state." The game can then run and be recorded to see what the output is after a specific set of inputs. This entire process can be automated, by creating a script with several different arrays to cover each test case and then recording the output of the "assertEquals" function. \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{System Tests}
