@@ -1,25 +1,31 @@
+#LaTeX
 *.gz
 *.aux
 *.log
 *.toc
-*.DS_Store
 *.lot
+*.swp
+*.out
+*.lof
 
 *.iml
 *.class
 
 
-## Directory-based project format:
+#Directory-based project format:
 .idea/
 .gradle/
 
-## File-based project format:
+#File-based project format:
 *.ipr
 *.iws
 
-# IntelliJ
+#IntelliJ
 /out/
 
+#Doxygen Generated Files
 /Doxygen/Output
 
+#OS Files
+*.DS_Store
 Thumbs.db
