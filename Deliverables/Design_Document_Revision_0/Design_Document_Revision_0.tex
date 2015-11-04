@@ -115,10 +115,31 @@ In terms of other documentation, after completing the Software Requirements Spec
 The rest of the design document is organized as follows, section 2 lists the anticipated and unlikely changes of the software requirements. Section 3 lists the module hierarchy that was constructed. Section 4 lists the connection between requirements and design. Section 5 includes two traceability matrices that check the completeness of the requirements provided in the SRS. Section 6 gives a detailed description of the modules. Section 7 describes the use relation between modules. 
 
 \section{Anticipated and Unlikely Changes}
-
+This section lists possible changes to the system that are put into two sections, according to their likelihood. The first subsection are the anticipated changes(section 2.1), and the second subsection are the unlikely changes(section 2.2).
 \subsection{Anticipated Changes}
+Anticipated changes are the source of the information that is to be hidden inside the modules.
+Ideally, changing one of the anticipated changes will only require changing the one module
+that hides the associated decision. The approach adapted here is called design for change.
+\begin{itemize}
+\item \textbf{AC1:} The hardware the game will run on
+\item \textbf{AC2:} Winning tile needed to finish the game
+\item \textbf{AC3:} Size of the board
+\item \textbf{AC4:} Number on largest tile
+\item \textbf{AC5:} High score section
+\item \textbf{AC6:} The OS the software will run on
+\end{itemize}
 
 \subsection{Unlikely Changes}
+It is not intended that the following changes will be made because if they were to be changed, then many parts of the design must be modified. Therefore instead of having to modify the rest of the modules and making the implementation more difficult, the changes listed below are unlikely in order to keep the design consistent and robust. 
+\begin{itemize}
+\item \textbf{UC1:} Input to the game
+\item \textbf{UC2:} Smallest tile to start the game
+\item \textbf{UC3:} Moves allowed
+\item \textbf{UC4:} Output of the game
+\item \textbf{UC5:} Progress through game (i.e. similar tiles are added not multiplied)
+\item \textbf{UC6:} Scoring mechanism
+\item \textbf{UC7:}  Losing conditions 
+\end{itemize} 
 
 \section{Module Hierarchy}
 This section provides an overview of the module design. Modules are summarized 
