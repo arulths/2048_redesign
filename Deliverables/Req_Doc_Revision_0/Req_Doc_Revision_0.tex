@@ -32,7 +32,8 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[12pt]{article}
-
+\usepackage[hidelinks]{hyperref}
+\hypersetup{linktoc=all}
 \begin{document}
 
 \begin{titlepage}
@@ -88,6 +89,12 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
 
 \newpage
 \tableofcontents
+\newpage
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+\newpage
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
 \newpage
 
 \section{Purpose of the Project}
