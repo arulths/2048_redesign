@@ -8,23 +8,35 @@ import java.awt.*;
 
 public class Tile {
     int value;
-
+    /**
+    * Creates a blank tile of object Tile.
+    */
     public Tile() {
         this(0);
     }
-
+    /**
+    * Creates a tile with a specified value
+    * @param x an int argument
+    */
     public Tile(int x) {
         value = x;
     }
-
+    /**
+    * Sets the isEmpty function to suite this classes needs
+    */
     public boolean isEmpty() {
         return value == 0;
     }
-
+    /**
+    * 
+    */
     public Color getForeground() {
         return value < 16 ? new Color(0x776e65) :  new Color(0xf9f6f2);
     }
-
+    /**
+    * Sets the tile to a specific colour depending on the value of the tile.
+    * @return colour object, the colour of the tile
+    */
     public Color getBackground() {
         switch (value) {
             case 2:    return new Color(0xeee4da);
@@ -41,7 +53,10 @@ public class Tile {
         }
         return new Color(0xcdc1b4);
     }
-
+    /**
+    * Sets a function to return its value when called.
+    * @return int, the value
+    */
     public int getValue() {
         return value;
     }

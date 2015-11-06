@@ -14,7 +14,9 @@ public class Keyboard implements KeyListener {
 
     private GameView  game;
     private Board board;
-
+    /**
+    * 
+    */
     Keyboard(GameView game, Board board){
         this.game = game;
         this.board = board;

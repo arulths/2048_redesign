@@ -17,7 +17,11 @@ public class GameView extends JPanel{
     private Board board;
     private int TILE_SIZE;
     private int TILES_MARGIN = 15;
-
+    /**
+    * Initializes the Game Board's title and margin size
+    * @param board a Board object
+    * @param scale an int argument
+    */
     public GameView(Board board,int scale){
         this.board = board;
         this.TILE_SIZE = scale;
@@ -25,6 +29,7 @@ public class GameView extends JPanel{
     }
     /**
      * Draws the graphics
+     * @param g is a graphics object
      */
     @Override
     public void paint(Graphics g) {
@@ -38,6 +43,13 @@ public class GameView extends JPanel{
         }
     }
 
+    /**
+    * Sets Board up and displays notifications for when the game is lost or won or can be restarted.
+    * @param g2 a Graphics object
+    * @param tile a tile object
+    * @param x an int argument
+    * @param y an in argument
+    */
     private void drawTile(Graphics g2, Tile tile, int x, int y) {
         Graphics2D g = ((Graphics2D) g2);
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -105,7 +117,9 @@ public class GameView extends JPanel{
     }
 
     /**
-     * Sample block comment
+     * Calculates the coordinate to start drawing a tile at using the tile number.
+     * @param arg an int argument
+     * @return int, the coordinates
      */
 
     private int offsetCoors(int arg) {
@@ -113,7 +127,12 @@ public class GameView extends JPanel{
     }
 
     /**
-     * Sample block comment
+     * Calculates where a string should be displayed based on screen size.
+     * @param s a string argument
+     * @param w an integer argument
+     * @param h an integer argument
+     * @param g a graphics object
+     * @return graphics object displaying a string
      */
 
     public void drawCenteredString(String s, int w, int h, Graphics g) {

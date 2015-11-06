@@ -14,10 +14,15 @@ public class Board {
     boolean myLose = false;
     int myScore = 0;
 
+    /**
+    * Creates a fresh Game Board
+    */
     public Board(){
         resetGame();
     }
-
+    /**
+    * Sets the parameters for resetting the game
+    */
     public void resetGame() {
         myScore = 0;
         myWin = false;
@@ -29,7 +34,9 @@ public class Board {
         addTile();
         addTile();
     }
-
+    /**
+    * Simulates a move on the Gameboard to the left, determines how tiles are merged together and whether new tiles need to be spawned.
+    */
     public void left() {
         boolean needAddTile = false;
         for (int i = 0; i < 4; i++) {
@@ -45,19 +52,25 @@ public class Board {
             addTile();
         }
     }
-
+    /**
+    * Simulates a move on the Game board to the right, uses left() logic.
+    */
     public void right() {
         myTiles = rotate(180);
         left();
         myTiles = rotate(180);
     }
-
+    /**
+    * Simulates an upwards movement on the Game board, uses left() logic.
+    */
     public void up() {
         myTiles = rotate(270);
         left();
         myTiles = rotate(90);
     }
-
+    /**
+    * Simulates downwards movement on the Game board, uses left() logic.
+    */
     public void down() {
         myTiles = rotate(90);
         left();
@@ -67,7 +80,9 @@ public class Board {
     private Tile tileAt(int x, int y) {
         return myTiles[x + y * 4];
     }
-
+    /**
+    * Pseudo-randomly determines where to place a new tile on the Game board.
+    */
     private void addTile() {
         List<Tile> list = availableSpace();
         if (!availableSpace().isEmpty()) {
@@ -76,7 +91,10 @@ public class Board {
             emptyTime.value = Math.random() < 0.9 ? 2 : 4;
         }
     }
-
+    /**
+    * Determines if there are any spaces on the gameboard.
+    * @return list, list of tiles
+    */
     private List<Tile> availableSpace() {
         final List<Tile> list = new ArrayList<Tile>(16);
         for (Tile t : myTiles) {
@@ -86,11 +104,17 @@ public class Board {
         }
         return list;
     }
-
+    /**
+    * Determines whethere there are any available spaces on the Game board.
+    * @return boolean, if there are any available spaces
+    */
     private boolean isFull() {
         return availableSpace().size() == 0;
     }
-
+    /**
+    * Determines if the player can make a move or not
+    * @return boolean, whether player can make a move or not
+    */
     public boolean canMove() {
         if (!isFull()) {
             return true;
@@ -106,7 +130,9 @@ public class Board {
         }
         return false;
     }
-
+    /**
+    * Determines ??????????
+    */
     private boolean compare(Tile[] line1, Tile[] line2) {
         if (line1 == line2) {
             return true;
@@ -121,7 +147,10 @@ public class Board {
         }
         return true;
     }
-
+    /**
+    * Determines where a tile would be located at once a player makes a move
+    * @return newTiles, Tile objects with new tile positioning
+    */
     private Tile[] rotate(int angle) {
         Tile[] newTiles = new Tile[4 * 4];
         int offsetX = 3, offsetY = 3;
@@ -143,7 +172,9 @@ public class Board {
         }
         return newTiles;
     }
-
+    /**
+    * Determines how 
+    */
     private Tile[] moveLine(Tile[] oldLine) {
         LinkedList<Tile> l = new LinkedList<Tile>();
         for (int i = 0; i < 4; i++) {

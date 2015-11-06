@@ -11,7 +11,9 @@ import java.awt.*;
  */
 
 public class Main {
-
+    /**
+    * Main class used to set up and initialize a new Game board, and scale it to screen 
+    */
     public static void main(String[] args) {
         JFrame game = new JFrame();
         game.setTitle("2048 Game");
@@ -31,7 +33,10 @@ public class Main {
         game.setLocationRelativeTo(null);
         game.setVisible(true);
     }
-
+    /**
+    * Returns the screen height to be used in scaling the game window. 
+    * @return int, height of screen
+    */
     public static int ScreenHeight(){
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int height = gd.getDisplayMode().getHeight();
