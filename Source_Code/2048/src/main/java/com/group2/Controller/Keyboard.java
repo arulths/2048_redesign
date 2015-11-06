@@ -15,13 +15,18 @@ public class Keyboard implements KeyListener {
     private GameView  game;
     private Board board;
     /**
-    * 
+     * Constructor Creates a controller that links a GameView and Board together
+     * @param game a GameView
+     * @param board a Board
     */
     Keyboard(GameView game, Board board){
         this.game = game;
         this.board = board;
     }
-
+    /**
+     * Modifies the model based on the key pressed, updates GameView to display any changes made
+     * @param e KeyEvent
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
@@ -54,12 +59,16 @@ public class Keyboard implements KeyListener {
 
         game.repaint();
     }
-
+    /**
+     * Not Used
+     */
     @Override
     public void keyReleased(KeyEvent e) {
 
     }
-
+    /**
+     * Not Used
+     */
     @Override
     public void keyTyped(KeyEvent e) {
 
