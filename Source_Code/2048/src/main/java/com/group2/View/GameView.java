@@ -44,6 +44,38 @@ public class GameView extends JPanel{
     }
 
     /**
+     * Sets Font based on Type and size specified
+     * @param g is a graphics object
+     * @param Type is a string
+     * @param Size is an int
+     */
+    public void setFont(Graphics g, String Type,int Size){
+        if (Type.equals("BOLD")){
+            g.setFont(new Font(FONT_NAME, Font.BOLD, Size));
+        }
+        else if (Type.equals("PLAIN")){
+            g.setFont(new Font(FONT_NAME, Font.PLAIN, Size));
+        }
+    }
+
+    /**
+     *Sets Color based on r,g,b values and an alpha value which indicated transparency
+     * @param gr is a graphics object
+     * @param r is an int
+     * @param g is an int
+     * @param b is an int
+     * @param a is an int
+     */
+    public void setColor(Graphics gr, int r, int g, int b, int a){
+        if (a == 0){
+            gr.setColor(new Color (r, g, b));
+        }
+        if (a != 0){
+            gr.setColor(new Color (r, g, b, a));
+        }
+    }
+
+    /**
     * Sets Board up and displays notifications for when the game is lost or won or can be restarted.
     * @param g2 a Graphics object
     * @param tile a tile object
@@ -63,10 +95,11 @@ public class GameView extends JPanel{
         g.setColor(tile.getForeground());
 
         //This needs to scale
-        final int size = value < 100 ? 200 : value < 1000 ? 175 : 135;
+        final int NUMBER_SIZE = value < 100 ? (int)(TILE_SIZE*0.7) : value < 1000 ? (int)(TILE_SIZE*0.5) : (int)(TILE_SIZE*0.4);
 
-        final Font font = new Font(FONT_NAME, Font.BOLD, size);
-        g.setFont(font);
+
+        final Font font = new Font(FONT_NAME, Font.BOLD, NUMBER_SIZE);
+        setFont(g, "BOLD", NUMBER_SIZE); //sets font based on size of the number
 
         String s = String.valueOf(value);
         final FontMetrics fm = getFontMetrics(font);
@@ -80,20 +113,21 @@ public class GameView extends JPanel{
             g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2);
 
         if (board.isMyWin() || board.isMyLose()) {
-            g.setColor(new Color(255, 255, 255, 30));
+            setColor(g, 255, 255, 255, 30);
             g.fillRect(0, 0, getWidth(), getHeight());
 
             //This needs to scale
-            g.setFont(new Font(FONT_NAME, Font.PLAIN, 50));
-            g.setColor(new Color(128, 128, 128, 128));
+            setFont(g, "PLAIN", 50);
+            setColor(g, 128, 128, 128, 128);
+
 
             //Change this line to scale
             drawCenteredString("Press ESC to play again", getWidth(), getHeight() * 2 - g.getFontMetrics().getHeight()-100, g);
 
-            g.setColor(new Color(78, 139, 202));
+            setColor(g, 78, 139, 202, 0);
 
             //This needs to scale
-            g.setFont(new Font(FONT_NAME, Font.BOLD, 48));
+            setFont(g, "BOLD", 48);
 
             if (board.isMyWin()) {
                 //Change this line to scale
@@ -106,10 +140,10 @@ public class GameView extends JPanel{
             }
         }
 
-        g.setColor(new Color(128, 128, 128, 128));
+        setColor(g, 128, 128, 128, 128);
 
         // /This needs to be scaled
-        g.setFont(new Font(FONT_NAME, Font.PLAIN, 70));
+        setFont(g, "PLAIN", 70);
 
         //Change this line to scale
         drawCenteredString(("Score: " + board.getMyScore()), this.getWidth(), this.getHeight() * 2, g);
