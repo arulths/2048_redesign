@@ -9,10 +9,15 @@ import java.util.List;
  */
 
 public class Board {
+
+    public enum State {
+        WIN,LOSE,IN_PROGRESS
+    }
+
+    private final int TARGET = 2048;
     private Tile[] myTiles;
-    boolean myWin = false;
-    boolean myLose = false;
-    int myScore = 0;
+    private State gameState;
+    private int score = 0;
 
     /**
     * Creates a fresh Game Board
@@ -20,13 +25,13 @@ public class Board {
     public Board(){
         resetGame();
     }
+
     /**
     * Sets the parameters for resetting the game
     */
     public void resetGame() {
-        myScore = 0;
-        myWin = false;
-        myLose = false;
+        score = 0;
+        gameState = State.IN_PROGRESS;
         myTiles = new Tile[4 * 4];
         for (int i = 0; i < myTiles.length; i++) {
             myTiles[i] = new Tile();
@@ -34,6 +39,7 @@ public class Board {
         addTile();
         addTile();
     }
+
     /**
     * Simulates a move on the Gameboard to the left, determines how tiles are merged together and whether new tiles need to be spawned.
     */
@@ -51,7 +57,9 @@ public class Board {
         if (needAddTile) {
             addTile();
         }
+        updateStatus();
     }
+
     /**
     * Simulates a move on the Game board to the right, uses left() logic.
     */
@@ -59,7 +67,9 @@ public class Board {
         myTiles = rotate(180);
         left();
         myTiles = rotate(180);
+        updateStatus();
     }
+
     /**
     * Simulates an upwards movement on the Game board, uses left() logic.
     */
@@ -67,7 +77,9 @@ public class Board {
         myTiles = rotate(270);
         left();
         myTiles = rotate(90);
+        updateStatus();
     }
+
     /**
     * Simulates downwards movement on the Game board, uses left() logic.
     */
@@ -75,11 +87,13 @@ public class Board {
         myTiles = rotate(90);
         left();
         myTiles = rotate(270);
+        updateStatus();
     }
 
     private Tile tileAt(int x, int y) {
         return myTiles[x + y * 4];
     }
+
     /**
     * Pseudo-randomly determines where to place a new tile on the Game board.
     */
@@ -91,6 +105,7 @@ public class Board {
             emptyTime.value = Math.random() < 0.9 ? 2 : 4;
         }
     }
+
     /**
     * Determines if there are any spaces on the gameboard.
     * @return list, list of tiles
@@ -104,6 +119,7 @@ public class Board {
         }
         return list;
     }
+
     /**
     * Determines whethere there are any available spaces on the Game board.
     * @return boolean, if there are any available spaces
@@ -111,6 +127,7 @@ public class Board {
     private boolean isFull() {
         return availableSpace().size() == 0;
     }
+
     /**
     * Determines if the player can make a move or not
     * @return boolean, whether player can make a move or not
@@ -130,6 +147,7 @@ public class Board {
         }
         return false;
     }
+
     /**
     * Determines ??????????
     */
@@ -147,6 +165,7 @@ public class Board {
         }
         return true;
     }
+
     /**
     * Determines where a tile would be located at once a player makes a move
     * @return newTiles, Tile objects with new tile positioning
@@ -172,6 +191,7 @@ public class Board {
         }
         return newTiles;
     }
+
     /**
     * Determines how 
     */
@@ -199,11 +219,7 @@ public class Board {
             int num = oldLine[i].value;
             if (i < 3 && oldLine[i].value == oldLine[i + 1].value) {
                 num *= 2;
-                myScore += num;
-                int ourTarget = 2048;
-                if (num == ourTarget) {
-                    myWin = true;
-                }
+                score = score + num;
                 i++;
             }
             list.add(new Tile(num));
@@ -230,6 +246,18 @@ public class Board {
         return result;
     }
 
+    private void updateStatus(){
+        if(!canMove()){
+            gameState = State.LOSE;
+        }
+        for (int i = 0; i<myTiles.length;i++){
+            if(myTiles[i].getValue() == TARGET){
+                gameState = State.WIN;
+                break;
+            }
+        }
+    }
+
     private void setLine(int index, Tile[] re) {
         System.arraycopy(re, 0, myTiles, index * 4, 4);
     }
@@ -238,32 +266,16 @@ public class Board {
         this.myTiles = myTiles;
     }
 
-    public void setMyWin(boolean myWin) {
-        this.myWin = myWin;
-    }
-
-    public void setMyLose(boolean myLose) {
-        this.myLose = myLose;
-    }
-
-    public void setMyScore(int myScore) {
-        this.myScore = myScore;
-    }
-
     public Tile[] getMyTiles() {
         return myTiles;
     }
 
-    public boolean isMyWin() {
-        return myWin;
+    public int getScore() {
+        return score;
     }
 
-    public boolean isMyLose() {
-        return myLose;
-    }
-
-    public int getMyScore() {
-        return myScore;
+    public State getGameState() {
+        return gameState;
     }
 
 }

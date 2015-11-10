@@ -14,31 +14,45 @@ import com.group2.Model.Tile;
 public class GameView extends JPanel{
     private final Color BG_COLOR = new Color(0xbbada0);
     private final String FONT_NAME = "Arial";
-    private Board board;
-    private int TILE_SIZE;
-    private int TILES_MARGIN = 15;
+    private final int TILES_IN_ROW = 4;
+    private final int TILE_SIZE;
+    private final int TILES_MARGIN;
+    private final Board BOARD;
+
     /**
     * Initializes the Game Board's title and margin size
     * @param board a Board object
-    * @param scale an int argument
     */
-    public GameView(Board board,int scale){
-        this.board = board;
-        this.TILE_SIZE = scale;
-        this.TILES_MARGIN = scale/20;
+    public GameView(Board board){
+        this.BOARD = board;
+        //Divide the screen resolution by 7, then round to the nearest 10
+        this.TILE_SIZE = Math.round((screenHeight() / 7 + 5)/10) * 10;
+        //1 TILE_MARGIN is 1/20 of a TILE_SIZE
+        this.TILES_MARGIN = TILE_SIZE/20;
     }
+
+    /**
+     * Returns the size needed to display the gui, including all the tiles, margins between tiles and score bar at the bottom
+     * @return Dimension
+     */
+    @Override
+    public Dimension getPreferredSize() {
+        int w = (TILE_SIZE * 4) + (TILES_MARGIN * 5);
+        int h = (TILE_SIZE * 4) + (TILES_MARGIN * 5) + (TILE_SIZE / 2);
+        return new Dimension(w,h);
+    }
+
     /**
      * Draws the graphics
      * @param g is a graphics object
      */
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
         g.setColor(BG_COLOR);
-        g.fillRect(0, 0, this.getSize().width, this.getSize().height);
-        for (int y = 0; y < 4; y++) {
-            for (int x = 0; x < 4; x++) {
-                drawTile(g, board.getMyTiles()[x + y * 4], x, y);
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        for (int y = 0; y < TILES_IN_ROW; y++) {
+            for (int x = 0; x < TILES_IN_ROW; x++) {
+                drawTile(g, BOARD.getMyTiles()[x + y * TILES_IN_ROW], x, y);
             }
         }
     }
@@ -80,7 +94,7 @@ public class GameView extends JPanel{
     * @param g2 a Graphics object
     * @param tile a tile object
     * @param x an int argument
-    * @param y an in argument
+    * @param y an int argument
     */
     private void drawTile(Graphics g2, Tile tile, int x, int y) {
         Graphics2D g = ((Graphics2D) g2);
@@ -97,56 +111,49 @@ public class GameView extends JPanel{
         //This needs to scale
         final int NUMBER_SIZE = value < 100 ? (int)(TILE_SIZE*0.7) : value < 1000 ? (int)(TILE_SIZE*0.5) : (int)(TILE_SIZE*0.4);
 
-
-        final Font font = new Font(FONT_NAME, Font.BOLD, NUMBER_SIZE);
         setFont(g, "BOLD", NUMBER_SIZE); //sets font based on size of the number
 
         String s = String.valueOf(value);
-        final FontMetrics fm = getFontMetrics(font);
 
-        final int w = fm.stringWidth(s);
-        final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
+        if (value != 0) {
+            drawCenteredString(g,s,xOffset,yOffset,TILE_SIZE,TILE_SIZE);
+        }
 
-        if (value != 0)
 
-            //Fix this line to center the number on the tiles
-            g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2);
-
-        if (board.isMyWin() || board.isMyLose()) {
+        if (BOARD.getGameState() != Board.State.IN_PROGRESS) {
             setColor(g, 255, 255, 255, 30);
             g.fillRect(0, 0, getWidth(), getHeight());
 
             //This needs to scale
-            setFont(g, "PLAIN", 50);
+            setFont(g, "PLAIN", TILE_SIZE/5);
             setColor(g, 128, 128, 128, 128);
 
 
             //Change this line to scale
-            drawCenteredString("Press ESC to play again", getWidth(), getHeight() * 2 - g.getFontMetrics().getHeight()-100, g);
+            drawCenteredString(g,"Press ESC to play again",0,0,this.getWidth(),TILE_SIZE+TILES_MARGIN);
 
             setColor(g, 78, 139, 202, 0);
 
             //This needs to scale
-            setFont(g, "BOLD", 48);
+            setFont(g, "BOLD", TILE_SIZE/2);
 
-            if (board.isMyWin()) {
+            if (BOARD.getGameState() == Board.State.WIN) {
                 //Change this line to scale
-                drawCenteredString("You won!", getWidth(), getHeight(), g);
+                drawCenteredString(g,"You won!",0,0,this.getWidth(),this.getHeight());
             }
-            if (board.isMyLose()) {
+            if (BOARD.getGameState() == Board.State.LOSE) {
                 //Change these lines to scale
-                drawCenteredString("Game over!", getWidth(), getHeight()-getHeight()/5,g);
-                drawCenteredString("You lose!", getWidth(), getHeight()+getHeight()/5,g);
+                drawCenteredString(g,"You lose!",0,0,this.getWidth(),this.getHeight());
             }
         }
 
         setColor(g, 128, 128, 128, 128);
 
         // /This needs to be scaled
-        setFont(g, "PLAIN", 70);
+        setFont(g, "PLAIN", TILE_SIZE/4);
 
         //Change this line to scale
-        drawCenteredString(("Score: " + board.getMyScore()), this.getWidth(), this.getHeight() * 2, g);
+        drawCenteredString(g,("Score: " + BOARD.getScore()),0,this.getHeight()-TILE_SIZE/2,this.getWidth(),TILE_SIZE/2);
 
     }
 
@@ -155,25 +162,40 @@ public class GameView extends JPanel{
      * @param arg an int argument
      * @return int, the coordinates
      */
-
     private int offsetCoors(int arg) {
         return arg * (this.TILES_MARGIN + this.TILE_SIZE) + this.TILES_MARGIN;
     }
 
     /**
-     * Calculates where a string should be displayed based on screen size.
-     * @param s a string argument
-     * @param w an integer argument
-     * @param h an integer argument
+     * Displays the given string centered within the given rectangle
      * @param g a graphics object
-     * @return graphics object displaying a string
+     * @param s a string argument
+     * @param x an integer argument
+     * @param y an integer argument
+     * @param width an integer argument
+     * @param height an integer argument
      */
+    public void drawCenteredString(Graphics g, String s, int x, int y, int width, int height) {
+        // Find the size of string s in the font of the Graphics context "page"
+        FontMetrics fm   = g.getFontMetrics(g.getFont());
+        java.awt.geom.Rectangle2D rect = fm.getStringBounds(s, g);
+        int textHeight = (int)(rect.getHeight());
+        int textWidth  = (int)(rect.getWidth());
 
-    public void drawCenteredString(String s, int w, int h, Graphics g) {
-        FontMetrics fm = g.getFontMetrics();
-        int x = (w - fm.stringWidth(s)) / 2;
-        int y = (fm.getAscent() + (h - (fm.getAscent() + fm.getDescent())) / 2);
-        g.drawString(s, x, y);
+        // Center text horizontally and vertically within provided rectangular bounds
+        int textX = x + (width - textWidth)/2;
+        int textY = y + (height - textHeight)/2 + fm.getAscent();
+        g.drawString(s, textX, textY);
+    }
+
+    /**
+     * Returns the screen height to be used in scaling the game window.
+     * @return int, height of screen
+     */
+    public static int screenHeight(){
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int height = gd.getDisplayMode().getHeight();
+        return height;
     }
 
 }
