@@ -32,7 +32,11 @@ public class Tile {
      * @return colour
      */
     public Color getForeground() {
-        return value < 16 ? new Color(0x776e65) :  new Color(0xf9f6f2);
+        if (value <16){
+            return new Color(0x776e65);
+        }
+        else return new Color(0xf9f6f2);
+        //return value < 16 ? new Color(0x776e65) :  new Color(0xf9f6f2);
     }
     /**
     * Sets the tile to a specific colour depending on the value of the tile.
