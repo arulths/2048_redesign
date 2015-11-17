@@ -33,6 +33,7 @@ public class Board {
     public void resetGame() {
         gameState = State.IN_PROGRESS;
         this.score = 0;
+        this.highTile = 0;
         for (int x = 0; x < GRID_WIDTH; x++) {
             for (int y = 0; y < GRID_WIDTH; y++) {
                 grid[x][y] = new Tile(0);
