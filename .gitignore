@@ -16,6 +16,11 @@
 .idea/
 .gradle/
 
+#Gradle based files that are to be ignored
+gradle/
+gradlew*
+build/
+
 #File-based project format:
 *.ipr
 *.iws
