@@ -14,7 +14,7 @@ import com.group2.Model.Tile;
 public class GameView extends JPanel{
     private final Color BG_COLOR = new Color(0xbbada0);
     private final String FONT_NAME = "Arial";
-    private final int TILES_IN_ROW = 4;
+    private final int GRID_WIDTH = 4;
     private final int TILE_SIZE;
     private final int TILES_MARGIN;
     private final Board BOARD;
@@ -26,7 +26,7 @@ public class GameView extends JPanel{
     public GameView(Board board){
         this.BOARD = board;
         //Divide the screen resolution by 7, then round to the nearest 10
-        this.TILE_SIZE = Math.round((screenHeight() / 7 + 5)/10) * 10;
+        this.TILE_SIZE = Math.round((screenHeight() / (GRID_WIDTH+2) + 5)/10) * 10;
         //1 TILE_MARGIN is 1/20 of a TILE_SIZE
         this.TILES_MARGIN = TILE_SIZE/20;
     }
@@ -37,8 +37,8 @@ public class GameView extends JPanel{
      */
     @Override
     public Dimension getPreferredSize() {
-        int w = (TILE_SIZE * 4) + (TILES_MARGIN * 5);
-        int h = (TILE_SIZE * 4) + (TILES_MARGIN * 5) + (TILE_SIZE / 2);
+        int w = (TILE_SIZE * GRID_WIDTH) + (TILES_MARGIN * ((GRID_WIDTH+1)));
+        int h = (TILE_SIZE * GRID_WIDTH) + (TILES_MARGIN * ((GRID_WIDTH+1))) + (TILE_SIZE / 2);
         return new Dimension(w,h);
     }
 
@@ -50,11 +50,14 @@ public class GameView extends JPanel{
     public void paint(Graphics g) {
         g.setColor(BG_COLOR);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        for (int y = 0; y < TILES_IN_ROW; y++) {
-            for (int x = 0; x < TILES_IN_ROW; x++) {
-                drawTile(g, BOARD.getMyTiles()[x + y * TILES_IN_ROW], x, y);
+        for (int y = 0; y < GRID_WIDTH; y++) {
+            for (int x = 0; x < GRID_WIDTH; x++) {
+                //TODO FIGURE OUT WHY THE X AND Y need to be reversed when drawing the tiles/values
+                drawTile(g, BOARD.getGrid()[x][y], y, x);
             }
         }
+        //TODO Remove this
+        BOARD.displayBoard();//Used to allow us to see what the game board should look like, in text format
     }
 
     /**
@@ -108,7 +111,7 @@ public class GameView extends JPanel{
         g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
         g.setColor(tile.getForeground());
 
-        //This needs to scale
+        //TODO Restructure into a regular if
         final int NUMBER_SIZE = value < 100 ? (int)(TILE_SIZE*0.7) : value < 1000 ? (int)(TILE_SIZE*0.5) : (int)(TILE_SIZE*0.4);
 
         setFont(g, "BOLD", NUMBER_SIZE); //sets font based on size of the number
@@ -124,25 +127,19 @@ public class GameView extends JPanel{
             setColor(g, 255, 255, 255, 30);
             g.fillRect(0, 0, getWidth(), getHeight());
 
-            //This needs to scale
             setFont(g, "PLAIN", TILE_SIZE/5);
             setColor(g, 128, 128, 128, 128);
 
 
-            //Change this line to scale
             drawCenteredString(g,"Press ESC to play again",0,0,this.getWidth(),TILE_SIZE+TILES_MARGIN);
 
             setColor(g, 78, 139, 202, 0);
-
-            //This needs to scale
             setFont(g, "BOLD", TILE_SIZE/2);
 
             if (BOARD.getGameState() == Board.State.WIN) {
-                //Change this line to scale
                 drawCenteredString(g,"You won!",0,0,this.getWidth(),this.getHeight());
             }
             if (BOARD.getGameState() == Board.State.LOSE) {
-                //Change these lines to scale
                 drawCenteredString(g,"You lose!",0,0,this.getWidth(),this.getHeight());
             }
         }

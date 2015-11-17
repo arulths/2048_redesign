@@ -7,7 +7,7 @@ import java.awt.*;
  */
 
 public class Tile {
-    int value;
+    private int value = 0;
     /**
     * Creates a blank tile of object Tile.
     */
@@ -60,5 +60,9 @@ public class Tile {
     */
     public int getValue() {
         return value;
+    }
+
+    public void setValue(int v){
+        value = v;
     }
 }
