@@ -101,6 +101,18 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
 \newpage
 
 \section{Introduction}
+The purpose of the test report is to specify in detail the test cases implemented for 2048.
+
+\section{Scope}
+This report contains test cases for both the front end and back end of the application. For every component tested we present a short discussion about the test cases chosen, a summary of the results, and address any issues that may have arisen. Types of tests performed include unit tests and system tests, all of which are automated.
+\section {Method of Testing}
+
+\subsection {Unit Testing}
+The application is broken down into a Model, View, Controller (MVC) format, in which all the data and objects are placed within the Model class. The visualization of the application is placed within the View class, and the logic to change the states of the application is separated into the Control class. Using this format, we can test the correctness and functionality of the application in the form of JUnit testing. This separates the test cases into smaller ones, and tests every single class with specific cases to ensure overall correctness. The process of creating a new game of 2048 in its current implementation, involves a 'game board' array that contains all the values of the current state. An array contains 16 values, as the game board holds 'tile' objects of type integer in a 4x4 format. Testing for a specific case would be achieved by creating the initial state of the test case, applying the input, and then recording the output. The initial state consists of creating a new instance of the game board and inserting a tile object that is placed at a specific place on the board. The input would be the function that exists within the class which would be applied to the initial state.  An 'assertEquals' statement would be written stating the expected output of the test case.  For example, testing for a win in 2048 can be done by creating a game board where at least two values contain the tile object with values of 1024. This will be the 'initial state.' Then the left() function can be called to join the two tiles together. The assertEquals() function can be written to make sure that the 2048 tile is generated at the proper spot its supposed to be at. The script can then be compiled and run to check if the output matches the expected output specified in the assertEquals() statement.
+
+\subsection{Manual Testing}
+
+
 
 \section{Testing Results}
 
