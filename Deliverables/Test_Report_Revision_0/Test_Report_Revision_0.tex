@@ -94,6 +94,7 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
     Revision Number & Revision Date & Description & Author \\ \hline
     0 & Nov 23 & Created Test Report & Josh Voskamp \\ \hline
 	0 & Nov 23 & Intro, Scope, Methods & Stephan Arulthasan\\ \hline
+	0 & Nov 25 & Non-functional & Mohammad Naveed \\ \hline
     \end{tabular}
     \caption{Revision History}
 \end{table}
@@ -105,7 +106,8 @@ The purpose of the test report is to specify in detail the test cases implemente
 
 \section{Scope}
 This report contains test cases for both the front end and back end of the application. For every component tested we present a short discussion about the test cases chosen, a summary of the results, and address any issues that may have arisen. Types of tests performed include unit tests and system tests, all of which are automated.
-\section {Method of Testing}
+
+\section {Method of Testing}
 
 \subsection {Unit Testing}
 The application is broken down into a Model, View, Controller (MVC) format, in which all the data and objects are placed within the Model class. The visualization of the application is placed within the View class, and the logic to change the states of the application is separated into the Control class. Using this format, we can test the correctness and functionality of the application in the form of JUnit testing. This separates the test cases into smaller ones, and tests every single class with specific cases to ensure overall correctness. The process of creating a new game of 2048 in its current implementation, involves a 'game board' array that contains all the values of the current state. An array contains 16 values, as the game board holds 'tile' objects of type integer in a 4x4 format. Testing for a specific case would be achieved by creating the initial state of the test case, applying the input, and then recording the output. The initial state consists of creating a new instance of the game board and inserting a tile object that is placed at a specific place on the board. The input would be the function that exists within the class which would be applied to the initial state.  An 'assertEquals' statement would be written stating the expected output of the test case.  For example, testing for a win in 2048 can be done by creating a game board where at least two values contain the tile object with values of 1024. This will be the 'initial state.' Then the left() function can be called to join the two tiles together. The assertEquals() function can be written to make sure that the 2048 tile is generated at the proper spot its supposed to be at. The script can then be compiled and run to check if the output matches the expected output specified in the assertEquals() statement.
@@ -172,7 +174,7 @@ each other.\\
 \textbf{Pass/Fail:} Pass
 
 \subsection{Test Case 7: Testing against Existing Implementation.}
-\textbf{Initial State:} Original implementation and new implementation, with idential tile locations\\
+\textbf{Initial State:} Original implementation and new implementation, with identical tile locations\\
 \textbf{Input:} User performs the same action on both implementations\\
 \textbf{Expected Output:} Both implementations result in the same board except for the new randomly generated tile\\
 \textbf{Output:} Both implementations result in the same board except for the new randomly generated tile\\
@@ -185,5 +187,15 @@ each other.\\
 	\caption{JUnit Test Results}
 	\label{JUnit Test Results}
 \end{figure}
+
+\section{Non-Functional Qualities Testing}
+\subsection{Usability}
+\subsubsection{GUI}
+	Testing the ease of use will be done through manual testing. It will be done by getting a set of users that have no background in computer science or any related fields, and getting feedback from them about the interface and how easy the game was to play. 
+	\par The feedback from the users will be obtained through a questionnaire in which the questions are based on how easy the GUI and game, was to understand and use. The users will then rate their satisfaction on a scale of 1 to 5, where 5 is being completely satisfied and 1 is being completely unsatisfied. A copy of the questionnaire can be found in the Appendix.
+	\par The results of the questionnaires will then be processed to give an average result/satisfaction rate on usability. This average will be compared to a usability criteria that is organized as follows:
+\
+
+
 
 \end{document}
