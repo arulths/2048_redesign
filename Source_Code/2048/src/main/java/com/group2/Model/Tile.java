@@ -8,24 +8,13 @@ import java.awt.*;
 
 public class Tile {
     private int value = 0;
-    /**
-    * Creates a blank tile of object Tile.
-    */
-    public Tile() {
-        this(0);
-    }
+
     /**
     * Creates a tile with a specified value
     * @param x an int argument
     */
     public Tile(int x) {
         value = x;
-    }
-    /**
-    * Sets the isEmpty function to suite this classes needs
-    */
-    public boolean isEmpty() {
-        return value == 0;
     }
     /**
      * Gets the Foreground Colour, returns a different color based on the value

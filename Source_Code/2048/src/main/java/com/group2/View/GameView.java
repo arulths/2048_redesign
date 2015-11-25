@@ -14,7 +14,7 @@ import com.group2.Model.Tile;
 public class GameView extends JPanel{
     private final Color BG_COLOR = new Color(0xbbada0);
     private final String FONT_NAME = "Arial";
-    private final int GRID_WIDTH = 4;
+    private final int GRID_WIDTH;
     private final int TILE_SIZE;
     private final int TILES_MARGIN;
     private final Board BOARD;
@@ -25,6 +25,7 @@ public class GameView extends JPanel{
     */
     public GameView(Board board){
         this.BOARD = board;
+        this.GRID_WIDTH = board.getGRID_WIDTH();
         //Divide the screen resolution by 7, then round to the nearest 10
         this.TILE_SIZE = Math.round((screenHeight() / (GRID_WIDTH+2) + 5)/10) * 10;
         //1 TILE_MARGIN is 1/20 of a TILE_SIZE
@@ -56,8 +57,6 @@ public class GameView extends JPanel{
                 drawTile(g, BOARD.getGrid()[x][y], y, x);
             }
         }
-        //TODO Remove this
-        BOARD.displayBoard();//Used to allow us to see what the game board should look like, in text format
     }
 
     /**

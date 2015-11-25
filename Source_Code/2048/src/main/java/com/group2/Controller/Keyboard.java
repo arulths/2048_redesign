@@ -18,7 +18,7 @@ public class Keyboard extends KeyAdapter {
      * @param gui a GameView
      * @param board a Board
     */
-    Keyboard(GameView gui, Board board){
+    public Keyboard(GameView gui, Board board){
         this.GUI = gui;
         this.BOARD = board;
     }
