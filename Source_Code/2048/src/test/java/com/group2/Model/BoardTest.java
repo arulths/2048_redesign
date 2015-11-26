@@ -25,13 +25,16 @@ public class BoardTest {
         setTile(0,0,2);
         setTile(0,1,2);
         board.left();
-        assertEquals(getTile(0,0),4);
+        assertEquals(getTile(0, 0), 4);
         cleanBoard();
         setTile(0,0,1024);
         setTile(0,1,1024);
         board.left();
         assertEquals(getTile(0,0),2048);
         cleanBoard();
+        setTile(3,0,512);
+        board.left();
+        assertEquals(getTile(3,0),512);
     }
 
     @Test
@@ -41,6 +44,9 @@ public class BoardTest {
         board.right();
         assertEquals(getTile(0,3),4);
         cleanBoard();
+        setTile(3,3,128);
+        board.right();
+        assertEquals(getTile(3,3),128);
     }
 
     @Test
@@ -50,6 +56,9 @@ public class BoardTest {
         board.up();
         assertEquals(getTile(0,1),4);
         cleanBoard();
+        setTile(0,2,256);
+        board.up();
+        assertEquals(getTile(0,2),256);
     }
 
     @Test
@@ -59,6 +68,9 @@ public class BoardTest {
         board.down();
         assertEquals(getTile(3,1),32);
         cleanBoard();
+        setTile(3,1,64);
+        board.down();
+        assertEquals(getTile(3,1),64);
     }
 
     @Test

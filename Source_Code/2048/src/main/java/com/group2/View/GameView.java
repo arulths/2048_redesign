@@ -27,7 +27,7 @@ public class GameView extends JPanel{
         this.BOARD = board;
         this.GRID_WIDTH = board.getGRID_WIDTH();
         //Divide the screen resolution by 7, then round to the nearest 10
-        this.TILE_SIZE = Math.round((screenHeight() / (GRID_WIDTH+2) + 5)/10) * 10;
+        this.TILE_SIZE = Math.round((GameWindow.screenHeight() / (GRID_WIDTH+2) + 5)/10) * 10;
         //1 TILE_MARGIN is 1/20 of a TILE_SIZE
         this.TILES_MARGIN = TILE_SIZE/20;
     }
@@ -65,7 +65,7 @@ public class GameView extends JPanel{
      * @param Type is a string
      * @param Size is an int
      */
-    public void setFont(Graphics g, String Type,int Size){
+    private void setFont(Graphics g, String Type,int Size){
         if (Type.equals("BOLD")){
             g.setFont(new Font(FONT_NAME, Font.BOLD, Size));
         }
@@ -82,7 +82,7 @@ public class GameView extends JPanel{
      * @param b is an int
      * @param a is an int
      */
-    public void setColor(Graphics gr, int r, int g, int b, int a){
+    private void setColor(Graphics gr, int r, int g, int b, int a){
         if (a == 0){
             gr.setColor(new Color (r, g, b));
         }
@@ -171,7 +171,7 @@ public class GameView extends JPanel{
      * @param width an integer argument
      * @param height an integer argument
      */
-    public void drawCenteredString(Graphics g, String s, int x, int y, int width, int height) {
+    private void drawCenteredString(Graphics g, String s, int x, int y, int width, int height) {
         // Find the size of string s in the font of the Graphics context "page"
         FontMetrics fm   = g.getFontMetrics(g.getFont());
         java.awt.geom.Rectangle2D rect = fm.getStringBounds(s, g);
@@ -182,16 +182,6 @@ public class GameView extends JPanel{
         int textX = x + (width - textWidth)/2;
         int textY = y + (height - textHeight)/2 + fm.getAscent();
         g.drawString(s, textX, textY);
-    }
-
-    /**
-     * Returns the screen height to be used in scaling the game window.
-     * @return int, height of screen
-     */
-    public static int screenHeight(){
-        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        int height = gd.getDisplayMode().getHeight();
-        return height;
     }
 
 }
