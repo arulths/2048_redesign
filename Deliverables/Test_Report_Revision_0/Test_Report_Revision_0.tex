@@ -203,7 +203,17 @@ each other.\\
 
 \subsection{Performance}
 Testing the performance of 2048 will be done through both automated testing and manual testing. Automated testing will be done through JUnit test cases in which each test case models the permissible user actions. The response time of the game to the test cases will also be recorded. Manual testing will be done through a set of users that play the game and have the response time of each action recorded.
-\par The Junit library provides data on performance time. This library will be used to test the performance of the moves and the game in general. 
+\par The Junit library provides data on performance time. This library will be used to test the performance of the moves and the game in general. The following criteria will be used to rate the performance of the game:
+\begin{itemize}
+\item\emph{The performance will deemed poor and not up to standard if the average time taken to complete a move is more than 2 seconds}
+\item\emph{The performance will deemed satisfactory and partially up to standard if the average time taken to complete a move is between 1 and 2sec}
+\item\emph{The performance will deemed excellent and meeting standard if the average time taken to complete a move is less than 1sec}
+
+\end{itemize}
+
+\subsection{Portability}
+
+Testing the portability of 2048 will be done manually. The game will be run on all three different operating systems and results will be recorded (i.e. whether the game compiles and runs or not).\par In order for the game to meet portability standards it must run on all three different major operating systems every time.
 
 \section{Changes in Response to Testing}
 \subsection{Usability}
