@@ -13,8 +13,8 @@ public class Board {
     }
 
     private final int TARGET = 2048;
-    private final int GRID_WIDTH = 4;
-    private Tile[][] grid = new Tile[GRID_WIDTH][GRID_WIDTH];
+    private final int GRID_WIDTH;
+    private Tile[][] grid;
     private State gameState;
     private Random random = new Random();
     private int score = 0;
@@ -23,7 +23,15 @@ public class Board {
     /**
     * Creates a fresh Game Board
     */
-    public Board(){
+    public Board(int w) {
+        GRID_WIDTH = w;
+        grid = new Tile[GRID_WIDTH][GRID_WIDTH];
+        resetGame();
+    }
+
+    public Board() {
+        GRID_WIDTH = 4;
+        grid = new Tile[GRID_WIDTH][GRID_WIDTH];
         resetGame();
     }
 
@@ -266,16 +274,7 @@ public class Board {
         return gameState;
     }
 
-    /**
-     * Helper Method used to output the grid as text, not needed in final version
-     */
-    public void displayBoard(){
-        for(int i = 0; i < GRID_WIDTH; i++){
-            for(int j = 0; j < GRID_WIDTH; j++){
-                System.out.print(grid[i][j].getValue() + ",");
-            }
-            System.out.println();
-        }
-        System.out.println();
+    public int getGRID_WIDTH() {
+        return GRID_WIDTH;
     }
 }
