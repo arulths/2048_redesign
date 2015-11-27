@@ -17,6 +17,8 @@
 \usepackage[hidelinks]{hyperref}
 \hypersetup{linktoc=all}
 
+\usepackage{float}
+
 \usepackage{graphicx}
 \graphicspath{{Resources/}}
 
@@ -87,14 +89,15 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
 
 \section*{Revision History}
 \addcontentsline{toc}{section}{Revision History}
-\begin{table}[!htbp]
+\begin{table}[H]
 	\centering
-    \begin{tabular}{ | p{2cm} | l| l | l |p{3cm}|}
+    \begin{tabular}{ | p{2cm} |  p{2cm} | p{5cm} | p{3.8cm} |}
     \hline
     Revision Number & Revision Date & Description & Author \\ \hline
     0 & Nov 23 & Created Test Report & Josh Voskamp \\ \hline
-	0 & Nov 23 & Intro, Scope, Methods & Stephan Arulthasan\\ \hline
+	0 & Nov 23 & Intro, Scope, Methods of Testing & Stephan Arulthasan\\ \hline
 	0 & Nov 25 & Non-functional & Mohammad Naveed \\ \hline
+	0 & Nov 27 & User Feedback, and Response to Testing & Josh Voskamp \\ \hline
     \end{tabular}
     \caption{Revision History}
 \end{table}
@@ -105,7 +108,7 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
 The purpose of the test report is to specify in detail the test cases implemented for 2048.
 
 \section{Scope}
-This report contains test cases for both the front end and back end of the application. For every component tested we present a short discussion about the test cases chosen, a summary of the results, and address any issues that may have arisen. Types of tests performed include unit tests and system tests, all of which are automated.
+This report contains test cases for both the front end and back end of the application. For every component tested we present a short discussion about the test cases chosen, a summary of the results, and address any issues that may have arisen. Types of tests performedï¿½include unit tests and system tests, all of which are automated.
 
 \section {Method of Testing}
 
@@ -181,7 +184,7 @@ each other.\\
 \textbf{Method of Testing:} Manual testing, compare the resulting board from each implementation of the game\\
 \textbf{Pass/Fail:} Pass
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width = 14cm]{JUnit_Test_Results}
 	\caption{JUnit Test Results}
@@ -191,7 +194,7 @@ each other.\\
 \section{Non-Functional Qualities Testing}
 \subsection{Usability}
 \subsubsection{GUI}
-	Testing the ease of use will be done through manual testing. It will be done by getting a set of users that have no background in computer science or any related fields, and getting feedback from them about the interface and how easy the game was to play. 
+	Testing the ease of use will be done through manual testing. It will be done by getting a set of users that have no background in computer science or any related fields, and getting feedback from them about the interface and how easy the game was to play.
 	\par The feedback from the users will be obtained through a questionnaire in which the questions are based on how easy the GUI and game, was to understand and use. The users will then rate their satisfaction on a scale of 1 to 5, where 5 is being completely satisfied and 1 is being completely unsatisfied. A copy of the questionnaire can be found in the Appendix.
 	\par The results of the questionnaires will then be processed to give an average result/satisfaction rate on usability. This average will be compared to a usability criteria that is organized as follows:
 \begin{itemize}
@@ -215,9 +218,80 @@ each other.\\
 
 Testing the portability of 2048 will be done manually. The game will be run on all three different operating systems and results will be recorded (i.e. whether the game compiles and runs or not).\par In order for the game to meet portability standards it must run on all three different major operating systems every time.
 
+\section{User Feedback}
+User Feedback was collected using a google form. \\
+The google form can be found at: \\ \url{https://goo.gl/forms/SoHo9rTn39} \\
+The up to date data from the feedback can be found at:\\ \url{https://goo.gl/uG5pSM} \\
+The results displayed below are from Friday, November 27, 2015.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 10cm]{Before}
+	\caption{Is this your first time playing 2048?}
+	\label{Is this your first time playing 2048?}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 10cm]{Easy_Start}
+	\caption{How easy was the Game to start?}
+	\label{How easy was the Game to start?}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 10cm]{Easy_Play}
+	\caption{How easy was the game to play?}
+	\label{How easy was the game to play?}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 10cm]{Rules}
+	\caption{Were the rules of the game clear and easy to understand?}
+	\label{Were the rules of the game clear and easy to understand?}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 10cm]{Controls}
+	\caption{How satisfied were you with the choice of controls?}
+	\label{How satisfied were you with the choice of controls?}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 10cm]{Challenging}
+	\caption{How challenging was the game?}
+	\label{How challenging was the game?}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 10cm]{Navigation}
+	\caption{How easy was the navigation around different parts of the game?}
+	\label{How easy was the navigation around different parts of the game?}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 10cm]{Overall_Satisfaction}
+	\caption{What is your overall satisfaction on the usability of this game?}
+	\label{What is your overall satisfaction on the usability of this game?}
+\end{figure}
+
 \section{Changes in Response to Testing}
 \subsection{Usability}
+In response to user feedback on Usability, a help menu was added to give insturctions on how to play the game.
 
+\section{Code Coverage Metrics}
+Only the Model part of the software was tested using automated testing. The View and the Controller portions of the code were manually tested. More details can be found on the html files provided in the coverageMetrics.zip
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 14cm]{Code_Coverage}
+	\caption{Code Coverage Metrics}
+	\label{Code Coverage Metrics}
+\end{figure}
 
 \end{document}
