@@ -15,7 +15,7 @@
 \documentclass[12pt]{article}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{linktoc=all}
-
+\usepackage{xcolor}
 \usepackage{float}
 
 \usepackage{graphicx}
@@ -98,6 +98,7 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
 	0 & Nov 25 & Non-functional & Mohammad Naveed \\ \hline
 	0 & Nov 27 & User Feedback, and Response to Testing & Josh Voskamp \\ \hline
 	0 & Nov 27 & Traceability, Complete Methods of Testing & Stephan Arulthasan \\\hline
+	\color{red} 1 &\color{red} Dec 7 2015 &\color{red} Add Performance, Stress, and Other test Results &\color{red} Josh Voskamp \\\hline
     \end{tabular}
     \caption{Revision History}
 \end{table}
@@ -182,7 +183,37 @@ each other.\\
 \textbf{Pass/Fail:} Pass\\
 \textbf{Traceability:} M3: GameView.java, M5: Board.java || R4
 
-\subsection{Test Case 7: Testing against Existing Implementation.}
+\subsection{\textcolor{red}{Test Case: Performance}}
+\textcolor{red}{
+\textbf{Initial State:} The game board must be running\\
+\textbf{Input:} The user presses the arrow key\\
+\textbf{Expected Output:} The tiles move within 2 seconds of the user pressing the key\\
+\textbf{Output:} The tiles move in under 1 second of the user pressing the key\\
+\textbf{Method of Testing:} Manual testing\\
+\textbf{Pass/Fail:} Pass\\
+\textbf{Traceability:} M1: Hardware Hiding Module, M2: Keyboard.java, M3: GameView.java, M4: Main.java, M5: Board.java, M6: Tile.java || Performance}
+
+\subsection{\textcolor{red}{Test Case: Stress}}
+\textcolor{red}{
+\textbf{Initial State:} The game board must be running\\
+\textbf{Input:} CTRL or ALT + arrowkey\\
+\textbf{Expected Output:} Game ignores the use of CTRL or ALT key, and performs the regular operation associated the pressed arrow key\\
+\textbf{Output:} Game ignores the use of CTRL or ALT key, and performs the regular operation associated the pressed arrow key\\
+\textbf{Method of Testing:} Manual testing\\
+\textbf{Pass/Fail:} Pass\\
+\textbf{Traceability:} M1: Hardware Hiding Module, M2: Keyboard.java, M3: GameView.java, M4: Main.java, M5: Board.java, M6: Tile.java || Stress}
+
+\subsection{\textcolor{red}{Test Case: Stress 2}}
+\textcolor{red}{
+\textbf{Initial State:} The game board must be running\\
+\textbf{Input:} Press random keys, other than arrow keys\\
+\textbf{Expected Output:} The game does not change\\
+\textbf{Output:} The game does not change\\
+\textbf{Method of Testing:} Manual testing\\
+\textbf{Pass/Fail:} Pass\\
+\textbf{Traceability:} M1: Hardware Hiding Module, M2: Keyboard.java, M3: GameView.java, M4: Main.java, M5: Board.java, M6: Tile.java || Stress}
+
+\subsection{Test Case: Testing against Existing Implementation.}
 \textbf{Initial State:} Original implementation and new implementation, with identical tile locations\\
 \textbf{Input:} User performs the same action on both implementations\\
 \textbf{Expected Output:} Both implementations result in the same board except for the new randomly generated tile\\
@@ -190,7 +221,6 @@ each other.\\
 \textbf{Method of Testing:} Manual testing, compare the resulting board from each implementation of the game\\
 \textbf{Pass/Fail:} Pass\\
 \textbf{Traceability:} M1: Hardware Hiding Module, M2: Keyboard.java, M3: GameView.java, M4: Main.java, M5: Board.java, M6: Tile.java || R1, R2, R3, R4, R5, R6
-
 
 \begin{figure}[H]
 	\centering
@@ -209,8 +239,11 @@ each other.\\
 \item\emph{The usability will deemed poor and not up to standard if the average rate is less than 2}
 \item\emph{The usability will deemed satisfactory and partially up to standard if the average rate is between 2 and 3.5}
 \item\emph{The usability will deemed excellent and meeting standards if the average rate is between 3.5 and 5}
-
 \end{itemize}
+
+\textcolor{red}{Test Result: EXCELLENT}
+
+
 
 \subsection{Performance}
 
@@ -220,13 +253,16 @@ Testing the performance of 2048 will be done through both automated testing and 
 \item\emph{The performance will deemed poor and not up to standard if the average time taken to complete a move is more than 2 seconds}
 \item\emph{The performance will deemed satisfactory and partially up to standard if the average time taken to complete a move is between 1 and 2sec}
 \item\emph{The performance will deemed excellent and meeting standard if the average time taken to complete a move is less than 1sec}
-
 \end{itemize}
+
+\textcolor{red}{Test Result: EXCELLENT}
 
 \subsection{Portability}
 
 Testing the portability of 2048 will be done manually. The game will be run on all three different operating systems and results will be recorded (i.e. whether the game compiles and runs or not).
 \par In order for the game to meet portability standards it must run on all three different major operating systems every time.
+
+\textcolor{red}{Test Result: PASSED}
 
 \section{User Feedback}
 User Feedback was collected using a google form. \\
@@ -289,6 +325,7 @@ The results displayed below are from Friday, November 27, 2015.
 	\caption{What is your overall satisfaction on the usability of this game?}
 	\label{What is your overall satisfaction on the usability of this game?}
 \end{figure}
+\vfill
 
 \section{Changes in Response to Testing}
 \subsection{Usability}
