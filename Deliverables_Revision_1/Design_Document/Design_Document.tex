@@ -17,6 +17,8 @@
 \usepackage[hidelinks]{hyperref}
 \hypersetup{linktoc=all}
 \usepackage{graphicx}
+\usepackage{xcolor}
+
 
 \usepackage{pdfpages}
 
@@ -88,7 +90,7 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
 \addcontentsline{toc}{section}{Revision History}
 \begin{table}[!htbp]
 	\centering
-	\begin{tabular}{ | p{2cm} | p{2cm}| p{6cm} | p{4cm}|}
+	 \begin{tabular}{ | p{2cm} |  p{2cm} | p{5cm} | p{3.8cm} |}
 		\hline
 		Rev. No. & Rev. Date & Description & Author \\\hline
 		0 & Nov 2 2015 & Created Document & Mohammad Naveed \\\hline
@@ -100,6 +102,10 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
 		0 & Nov 4 2015 & Improved Module Decomposition & Stephan Arulthasan \\\hline
 		0 & Nov 6 2015 & Added Uses Hierarchy Diagram & Josh Voskamp \\\hline
 		0 & Nov 6 2015 & Completed Traceability Matrix & Stephan Arulthasan \\\hline
+		\textcolor{red}{1}&\textcolor{red}{Nov 25 2015}&\textcolor{red}{Added Revision History based on Commits, Added Pointers}&\textcolor{red}{Stephan Arulthasan}\\\hline
+		\textcolor{red}{1}&\textcolor{red}{Dec 3 2015}&\textcolor{red}{Update Modules to Reflect New Game Features}&\textcolor{red}{Stephan Arulthasan}\\\hline
+		\textcolor{red}{1}&\textcolor{red}{Dec 7 2015}&\textcolor{red}{Update Environment Variables and Traceability}&\textcolor{red}{Stephan Arulthasan}\\\hline
+		\textcolor{red}{1}&\textcolor{red}{Dec 8 2015}&\textcolor{red}{Update Uses Diagram and MIS}&\textcolor{red}{Josh Voskamp}\\\hline
 		
 	\end{tabular}
 	\caption{Revision History}
@@ -107,16 +113,10 @@ Stephan \textsc{Arulthasan} \textbf{1308004} \\[3cm]
 \newpage
 
 \section{Introduction}
-According to Jane McGonigal, a well known and world renowned game 
-designer; we spend 3 billion hours a week playing video games. That is a lot of 
-time that many people argue could be spent better, and that is what 2048 aims to 
-accomplish. More and more people are playing video games everyday and 
-2048 is a fun and challenging game that tests the users? mathematical as well as 
+\textcolor{red}{2048 is a fun and challenging game that tests the users mathematical as well as 
 their spatial intelligence. This allows 2048 to be fun, yet still be brain 
-enhancing. Since the target audience for this game is so large, we can take 
-advantage of this by providing users an option to spend their gaming time in a way 
-thats beneficial mentally while still being entertained. \par
-The design pattern that will be used to implement 2048 is the Model View Controller (MVC) design pattern. This pattern is based on the decomposition of the software into three different modules. The decomposition is based on the concept of information hiding. The model, view and controller modules. Each module has a specific task that it needs to focus on, for example, the view module focuses on the GUI of the game whereas the model module focuses on the data structures and actual data used in the game. \par
+enhancing.}  \par
+\textcolor{red}{The design pattern that will be used to implement 2048 is the Model View Controller (MVC) design pattern. This pattern is based on the decomposition of the software into three different modules. The decomposition into the model, view and controller modules is based on the concept of information hiding.} Each module has a specific task that it needs to focus on, for example, the view module focuses on the GUI of the game whereas the model module focuses on the data structures and actual data used in the game. \par
 In terms of other documentation, after completing the Software Requirements Specification (SRS), the first part of the design document is completed which is then followed by the development of the Module Interface Specification (MIS). The MIS specifies the externally observable behaviour of a module's access routines. \par
 The rest of the design document is organized as follows, section 2 lists the anticipated and unlikely changes of the software requirements. Section 3 lists the module hierarchy that was constructed. Section 4 lists the connection between requirements and design. Section 5 includes two traceability matrices that check the completeness of the requirements provided in the SRS. Section 6 gives a detailed description of the modules. Section 7 describes the use relation between modules. 
 
@@ -158,6 +158,8 @@ implemented.\bigskip\\
 \textbf{M4:} Main\\
 \textbf{M5:} Board\\
 \textbf{M6:} Tile\\
+\textcolor{red}{\textbf{M7:} GameWindow}\\
+\textcolor{red}{\textbf{M8:} Help}\\
 
 \begin{table}[!htbp]
 	\centering
@@ -166,7 +168,9 @@ implemented.\bigskip\\
 		Hardware-Hiding Module & \\\hline
 		Behaviour-Hiding Module & Keyboard & \\
 		& GameView & \\
-		& Main & \\\hline
+		& Main & \\
+		& \textcolor{red}{GameView} & \\
+		& \textcolor{red}{Help} & \\\hline
 		Software Decision Module & Board & Tile\\\hline
 		
 	\end{tabular}
@@ -179,7 +183,7 @@ implemented.\bigskip\\
 The design of the system is intended to satisfy the requirements developed in the SRS. In this stage, the system is decomposed into modules. The connection between requirements and modules is listed in Table 3.
 
 \section{Module Decomposition}
-Modules are decomposed according to the principle of "information hiding". Each module hides some design decision from the rest of the system. This is described in the \textit{Secrets} field. The \textit{Services} field specifies \textit{what} the module will do without documenting \textit{how} to do it. Only the leaf modules in the hierarchy have to be implemented. If a dash (\emph{--}) is shown, this means that the module is not a leaf and will not have to be implemented. Whether or not this module is implemented depends on the programming language selected.
+Modules are decomposed according to the principle of "information hiding". Each module hides some design decision from the rest of the system. This is described in the \textit{Secrets} field. The \textit{Services} field specifies \textit{what} the module will do without documenting \textit{how} to do it. Only the leaf modules in the hierarchy have to be implemented. If a dash (\emph{--}) is shown, this means that the module is not a leaf and will not have to be implemented. Whether or not this module is implemented depends on the programming language selected. \textcolor{red}{The "Environment Variable" field specifies external interaction for that specific module. In this implementation, the two external interactions are either "Keyboard input", the way the user interacts with the game, and "Computer Screen Resolution", the size of the screen the game is being run on.}
 
 \subsection{Hardware Hiding Modules \textbf{M1}}
 
@@ -211,6 +215,8 @@ Modules are decomposed according to the principle of "information hiding". Each 
 \item[Services:]Converts the input data into the data structure used by the
   input parameters module.
 \item[Implemented By:] 2048
+\item[\textcolor{red}{Environment Variable:} ]\textcolor{red}{Keyboard Input} 
+
 \end{description}
 
 \subsubsection{GameView \textbf{M3}}
@@ -219,6 +225,7 @@ Modules are decomposed according to the principle of "information hiding". Each 
 \item[Secrets:]The format and structure of the output data.
 \item[Services:]Outputs the results of the moves, including the score, winning game, losing game, current state of the board, and notifies you about the option to restart the game when you lose. 
 \item[Implemented By:] 2048
+\item[\textcolor{red}{Environment Variable:} ]\textcolor{red}{Computer Screen Resolution} 
 \end{description}
 
 \subsubsection{Main \textbf{M4}}
@@ -227,7 +234,26 @@ Modules are decomposed according to the principle of "information hiding". Each 
 \item[Secrets:] The algorithm for coordinating the running of the program.
 \item[Services:] Provides the main program.
 \item[Implemented By:] 2048
+\item[\textcolor{red}{Environment Variable:} ]\textcolor{red}{None} 
 \end{description}
+
+{\color{red}\subsubsection{GameWindow \textbf{M7}}}
+
+{\color{red}{\begin{description}
+\item[Secrets:] The contents of the games menu bar.
+\item[Services:] Provides access to resizing the board and the help menu. 
+\item[Implemented By:] 2048
+\item[\textcolor{red}{Environment Variable:} ]\textcolor{red}{Computer Screen Resolution} 
+\end{description}}}
+
+{\color{red}\subsubsection{Help \textbf{M8}}}
+
+{\color{red}{\begin{description}
+\item[Secrets:] The contents of the help menu.
+\item[Services:] Displays the rules of the game to the user. 
+\item[Implemented By:] 2048
+\item[\textcolor{red}{Environment Variable:} ]\textcolor{red}{None} 
+\end{description}}}
 
 \subsection{Software Decision Module}
 
@@ -243,9 +269,10 @@ Modules are decomposed according to the principle of "information hiding". Each 
 \subsubsection{Board \textbf{M5}}
 
 \begin{description}
-\item[Secrets:] The algorithm used to run the game and create moves- also includes algorithm to win and lose the game.
+\item[Secrets:] \textcolor{red}{The algorithm used to manipulate the game board.}
 \item[Services:] Provides the ability to play the game and set parameters to win and lose the game. 
 \item[Implemented By:] 2048
+\item[\textcolor{red}{Environment Variable:} ]\textcolor{red}{None} 
 \end{description}
 
 \subsubsection{Tile \textbf{M6}}
@@ -254,6 +281,7 @@ Modules are decomposed according to the principle of "information hiding". Each 
 \item[Secrets:] The algorithm that sets the value and colour of game pieces.
 \item[Services:] Provides the ability to create moves in the game and visually recognize different game pieces.
 \item[Implemented By:] 2048
+\item[\textcolor{red}{Environment Variable:} ]\textcolor{red}{Computer Screen Resolution} 
 \end{description}
 
 
@@ -266,14 +294,14 @@ requirements and between the modules and the anticipated changes.
 	\centering
 	\begin{tabular}{p{3cm}|p{9cm}}
 		\textbf{Req.} & \textbf{Modules} \\\hline
-		R1 & M1, M3, M4\\
-		R2 & M1, M3, M4 \\
-		R3 & M1, M3, M4 \\
-		R4 & M1, M2, M3, M4, M5, M6 \\
-		R5 & M1, M2, M3, M4, M5, M6\\
-		R6 & M1, M2, M3, M4, M5, M6\\
-		R7 & M1, M2, M3, M4, M5, M6\\
-		R8 & M1, M2, M3, M4, M5, M6\\\hline
+		R1 & M1, M3, M4, \textcolor{red}{M7}\\
+		R2 & M1, M3, M4, \textcolor{red}{M7}\\
+		R3 & M1, M3, M4, \textcolor{red}{M7}\\
+		R4 & M1, M2, M3, M4, M5, M6, \textcolor{red}{M7} \\
+		R5 & M1, M2, M3, M4, M5, M6, \textcolor{red}{M7, M8}\\
+		R6 & M1, M2, M3, M4, M5, M6, \textcolor{red}{M7, M8}\\
+		R7 & M1, M2, M3, M4, M5, M6, \textcolor{red}{M7}\\
+		R8 & M1, M2, M3, M4, M5, M6, \textcolor{red}{M7}\\\hline
 	\end{tabular}
 	\caption{Trace Between Requirements and Modules}
 	\label{Trace Between Requirements and Modules}
@@ -284,7 +312,7 @@ requirements and between the modules and the anticipated changes.
 		\textbf{AC} & \textbf{Modules} \\\hline
 		AC1 & M1 \\ 
 		AC2 &  M6\\  
-		AC3 &  M5\\  
+		AC3 &  M5, \textcolor{red}{M7}\\  
 		AC4 &  M6\\ 
 		AC5 & M3\\ 
 		AC6 & M1\\ \hline
@@ -296,7 +324,7 @@ requirements and between the modules and the anticipated changes.
 
 \section{Use Hierarchy Between Modules}
 \begin{figure}[!htbp]
-	\includegraphics{uses}
+	\includegraphics[scale=0.8]{uses}
 	\centering
 	\caption{Uses Hierarchy Diagram}
 	\label{Uses Hierarchy Diagram}
